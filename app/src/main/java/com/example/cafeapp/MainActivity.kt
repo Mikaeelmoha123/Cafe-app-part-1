@@ -1,5 +1,6 @@
 package com.example.cafeapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -7,7 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +24,11 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val fab: FloatingActionButton = findViewById(R.id.fab)
+        fab.setOnClickListener { view ->
+            val intent = Intent(this, OrderActivity::class.java)
+            startActivity(intent)
         }
 
     }
@@ -47,14 +55,5 @@ class MainActivity : AppCompatActivity() {
         val mOrderMessage = "You ordered a Froyo."
         displayToast(mOrderMessage)
     }
-
-    // Show a message using Snackbar at the bottom of the screen if clicked
-    fun startOrder(view: View) {
-        Snackbar.make(view, "Not yet implemented Order functionality", Snackbar.LENGTH_LONG)
-            .setAction("Action", null)
-            .show()
-    }
-
-
-
 }
+// Show a message using Snackbar at the bottom of the screen if clicked
